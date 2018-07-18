@@ -1,9 +1,6 @@
 package model.persistence;
 
-import model.ShapeColor;
-import model.ShapeShadingType;
-import model.ShapeType;
-import model.StartAndEndPointMode;
+import model.*;
 import model.dialogs.DialogProvider;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
@@ -74,6 +71,12 @@ public class ApplicationState implements IApplicationState {
     public StartAndEndPointMode getActiveStartAndEndPointMode() {
         return activeStartAndEndPointMode;
     }
+
+    @Override
+    public ShapeConfiguration getCurrentShapeConfiguration() {
+        return new ShapeConfiguration(activeShapeType, activePrimaryColor, activeSecondaryColor, activeShapeShadingType);
+    }
+
 
     private void setDefaults() {
         activeShapeType = ShapeType.ELLIPSE;
