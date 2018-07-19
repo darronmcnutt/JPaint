@@ -2,9 +2,11 @@ package model;
 
 import model.interfaces.IDrawShapeStrategy;
 import view.gui.PaintCanvas;
-import java.awt.*;
 
-public class DrawRectangleStrategy implements IDrawShapeStrategy {
+import java.awt.*;
+import java.awt.geom.Ellipse2D;
+
+public class DrawEllipseStrategy implements IDrawShapeStrategy {
 
     @Override
     public void draw(Shape shape, PaintCanvas canvas) {
@@ -29,17 +31,12 @@ public class DrawRectangleStrategy implements IDrawShapeStrategy {
             startY = temp;
         }
 
-        // Calculate width and height
+        // Calculate
         int width = endX - startX;
         int height = endY - startY;
 
-        // Draw rectangle
         Graphics2D canvasGraphics = canvas.getGraphics2D();
         canvasGraphics.setColor(Color.BLACK);
-        canvasGraphics.fillRect(startX,startY,width,height);
-
+        canvasGraphics.fill(new Ellipse2D.Double(startX,startY,width,height));
     }
-
-
-
 }

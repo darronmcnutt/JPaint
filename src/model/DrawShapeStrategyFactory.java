@@ -8,16 +8,14 @@ public class DrawShapeStrategyFactory {
         IDrawShapeStrategy strategy = null;
         switch(type) {
             case ELLIPSE:
-                strategy = new DrawRectangleStrategy(); //FIX
+                strategy = new DrawEllipseStrategy();
                 break;
             case TRIANGLE:
-                strategy = new DrawRectangleStrategy(); //FIX
+                strategy = new DrawTriangleStrategy();
                 break;
             case RECTANGLE:
                 strategy = new DrawRectangleStrategy();
                 break;
-            default:
-                throw new IllegalStateException();
         }
         return strategy;
     }

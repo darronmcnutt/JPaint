@@ -3,6 +3,8 @@ package model;
 import model.interfaces.IDrawShapeStrategy;
 import view.gui.PaintCanvas;
 
+import java.awt.*;
+
 public class ShapeDrawer {
     private final ShapeList shapeList;
     private final PaintCanvas canvas;
@@ -13,6 +15,13 @@ public class ShapeDrawer {
     }
 
     public void update() {
+
+        // Erase the canvas
+        Graphics2D canvasGraphics = canvas.getGraphics2D();
+        canvasGraphics.setColor(Color.WHITE);
+        canvasGraphics.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
+
+        // Draw all shapes form the shape list
         for(Shape shape : shapeList) {
             IDrawShapeStrategy strategy = DrawShapeStrategyFactory.getStrategy(shape);
             strategy.draw(shape,canvas);
