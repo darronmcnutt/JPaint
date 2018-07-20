@@ -4,7 +4,6 @@ import model.interfaces.IApplicationState;
 import model.interfaces.ICommand;
 import view.gui.PaintCanvas;
 
-import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
@@ -46,10 +45,10 @@ public class ClickHandler extends MouseAdapter {
                 command = new CreateShape(clickPoint,releasePoint,shapeConfiguration,shapeList);
                 break;
             case MOVE:
-                command = new MoveShapes();
+                command = new MoveShape();
                 break;
             case SELECT:
-                command = new SelectShapes();
+                command = new SelectShape();
                 break;
             default:
                 throw new IllegalStateException();

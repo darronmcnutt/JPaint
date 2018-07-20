@@ -9,29 +9,13 @@ public class DrawRectangleStrategy implements IDrawShapeStrategy {
     @Override
     public void draw(Shape shape, PaintCanvas canvas) {
 
-        // Unpack start and end points
-        int startX = shape.getStartPoint().getX();
-        int startY = shape.getStartPoint().getY();
+        // Unpack rectangle start point
+        int startX = shape.getRectX();
+        int startY = shape.getRectY();
 
-        int endX = shape.getEndPoint().getX();
-        int endY = shape.getEndPoint().getY();
-
-        // Swap start and end points if necessary
-        if (endX < startX) {
-            int temp = endX;
-            endX = startX;
-            startX = temp;
-        }
-
-        if (endY < startY) {
-            int temp = endY;
-            endY = startY;
-            startY = temp;
-        }
-
-        // Calculate width and height
-        int width = endX - startX;
-        int height = endY - startY;
+        // Get rectangle width and height
+        int width = shape.getRectWidth();
+        int height = shape.getRectHeight();
 
         // Draw rectangle
         Graphics2D canvasGraphics = canvas.getGraphics2D();

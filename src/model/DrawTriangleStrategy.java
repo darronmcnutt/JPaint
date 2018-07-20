@@ -29,6 +29,5 @@ public class DrawTriangleStrategy implements IDrawShapeStrategy {
         canvasGraphics.setColor(Color.BLACK);
         canvasGraphics.fill(triangle);
 
-
     }
 }
