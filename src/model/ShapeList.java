@@ -23,6 +23,11 @@ public class ShapeList implements Iterable<Shape> {
         drawer.update();
     }
 
+    public void remove(Shape shape) {
+        shapes.remove(shape);
+        drawer.update();
+    }
+
     @Override
     public Iterator<Shape> iterator() {
         return shapes.iterator();

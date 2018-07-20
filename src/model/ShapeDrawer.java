@@ -23,8 +23,8 @@ public class ShapeDrawer {
 
         // Draw all shapes form the shape list
         for(Shape shape : shapeList) {
-            IDrawShapeStrategy strategy = DrawShapeStrategyFactory.getStrategy(shape);
-            strategy.draw(shape,canvas);
+            IDrawShapeStrategy drawStrategy = DrawShapeStrategyFactory.getStrategy(shape);
+            drawStrategy.draw(shape,canvas);
         }
     }
 

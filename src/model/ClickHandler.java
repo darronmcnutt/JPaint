@@ -4,6 +4,7 @@ import model.interfaces.IApplicationState;
 import model.interfaces.ICommand;
 import view.gui.PaintCanvas;
 
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
