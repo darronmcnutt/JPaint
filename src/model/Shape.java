@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.*;
+import java.awt.Rectangle;
 
 public class Shape {
 
@@ -15,13 +15,11 @@ public class Shape {
     private ShapeShadingType shading;
 
     // Boundary rectangle
-    private int rectX;
-    private int rectY;
-    private int rectWidth;
-    private int rectHeight;
+    Rectangle boundary;
 
     public Shape(PairInt startPoint, PairInt endPoint, ShapeConfiguration shapeConfiguration) {
 
+        // Initialize fields
         this.startPoint = startPoint;
         this.endPoint = endPoint;
 
@@ -57,10 +55,10 @@ public class Shape {
             startY = temp;
         }
 
-        this.rectX = startX;
-        this.rectY = startY;
-        this.rectWidth = endX - startX;
-        this.rectHeight = endY - startY;
+        int width = endX - startX;
+        int height = endY - startY;
+
+        this.boundary = new Rectangle(startX,startY,width,height);
 
     }
 
@@ -88,11 +86,5 @@ public class Shape {
         return shading;
     }
 
-    public int getRectX() { return rectX; }
-
-    public int getRectY() { return rectY; }
-
-    public int getRectWidth() { return rectWidth; }
-
-    public int getRectHeight() { return rectHeight; }
+    public Rectangle getBoundary() { return boundary; }
 }
