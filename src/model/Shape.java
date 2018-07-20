@@ -9,6 +9,7 @@ public class Shape {
     private PairInt endPoint;
 
     // Shape configuration from UI
+    private ShapeConfiguration shapeConfiguration;
     private ShapeType type;
     private ShapeColor primaryColor;
     private ShapeColor secondaryColor;
@@ -27,6 +28,7 @@ public class Shape {
         configureBoundaryRectangle(startPoint, endPoint);
 
         // Unpack shapeConfiguration into fields
+        this.shapeConfiguration = shapeConfiguration;
         this.type = shapeConfiguration.getShapeType();
         this.primaryColor = shapeConfiguration.getPrimaryColor();
         this.secondaryColor = shapeConfiguration.getSecondaryColor();
@@ -87,4 +89,6 @@ public class Shape {
     }
 
     public Rectangle getBoundary() { return boundary; }
+
+    public ShapeConfiguration getShapeConfiguration() { return shapeConfiguration; }
 }
