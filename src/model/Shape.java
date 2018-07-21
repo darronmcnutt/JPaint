@@ -1,6 +1,6 @@
 package model;
 
-import java.awt.Rectangle;
+import java.awt.*;
 
 public class Shape {
 
@@ -11,11 +11,11 @@ public class Shape {
     // Shape configuration from UI
     private ShapeConfiguration shapeConfiguration;
     private ShapeType type;
-    private ShapeColor primaryColor;
-    private ShapeColor secondaryColor;
+    private Color primaryColor;
+    private Color secondaryColor;
     private ShapeShadingType shading;
 
-    // Boundary rectangle
+    // Shape boundary rectangle
     Rectangle boundary;
 
     public Shape(PairInt startPoint, PairInt endPoint, ShapeConfiguration shapeConfiguration) {
@@ -25,44 +25,16 @@ public class Shape {
         this.endPoint = endPoint;
 
         // Configure shape boundary rectangle
-        configureBoundaryRectangle(startPoint, endPoint);
+        this.boundary = RectangleGenerator.generate(startPoint,endPoint);
 
-        // Unpack shapeConfiguration into fields
+        // Unpack shapeConfiguration into fields and convert enum to Color
         this.shapeConfiguration = shapeConfiguration;
         this.type = shapeConfiguration.getShapeType();
-        this.primaryColor = shapeConfiguration.getPrimaryColor();
-        this.secondaryColor = shapeConfiguration.getSecondaryColor();
+        this.primaryColor = ShapeColorMap.get(shapeConfiguration.getPrimaryColor());
+        this.secondaryColor = ShapeColorMap.get(shapeConfiguration.getSecondaryColor());
         this.shading = shapeConfiguration.getShadingType();
     }
 
-    private void configureBoundaryRectangle (PairInt startPoint, PairInt endPoint) {
-
-        // Unpack start and end points
-        int startX = startPoint.getX();
-        int startY = startPoint.getY();
-
-        int endX = endPoint.getX();
-        int endY = endPoint.getY();
-
-        // Swap start and end points if necessary
-        if (endX < startX) {
-            int temp = endX;
-            endX = startX;
-            startX = temp;
-        }
-
-        if (endY < startY) {
-            int temp = endY;
-            endY = startY;
-            startY = temp;
-        }
-
-        int width = endX - startX;
-        int height = endY - startY;
-
-        this.boundary = new Rectangle(startX,startY,width,height);
-
-    }
 
     public PairInt getStartPoint() {
         return startPoint;
@@ -76,11 +48,11 @@ public class Shape {
         return type;
     }
 
-    public ShapeColor getPrimaryColor() {
+    public Color getPrimaryColor() {
         return primaryColor;
     }
 
-    public ShapeColor getSecondaryColor() {
+    public Color getSecondaryColor() {
         return secondaryColor;
     }
 

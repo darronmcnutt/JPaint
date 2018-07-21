@@ -80,9 +80,9 @@ public class ApplicationState implements IApplicationState {
 
     private void setDefaults() {
         activeShapeType = ShapeType.ELLIPSE;
-        activePrimaryColor = ShapeColor.BLUE;
-        activeSecondaryColor = ShapeColor.GREEN;
-        activeShapeShadingType = ShapeShadingType.FILLED_IN;
+        activePrimaryColor = ShapeColor.YELLOW;
+        activeSecondaryColor = ShapeColor.BLACK;
+        activeShapeShadingType = ShapeShadingType.OUTLINE_AND_FILLED_IN;
         activeStartAndEndPointMode = StartAndEndPointMode.DRAW;
     }
 }

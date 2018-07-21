@@ -1,6 +1,7 @@
 package model;
 
 import model.interfaces.IDrawShapeStrategy;
+import model.interfaces.IFillStrategy;
 import view.gui.PaintCanvas;
 
 import java.awt.*;
@@ -22,11 +23,20 @@ public class DrawEllipseStrategy implements IDrawShapeStrategy {
         double width = rectangle.getWidth();
         double height = rectangle.getHeight();
 
-        // Create ellipse
-        Ellipse2D.Double ellipse = new Ellipse2D.Double(startX,startY,width,height);
+        // Unpack shape configuration
+        Color primaryColor = shape.getPrimaryColor();
+        Color secondaryColor = shape.getSecondaryColor();
+        ShapeShadingType shading = shape.getShading();
 
+        // Create ellipse
+        Ellipse2D.Double ellipse = new Ellipse2D.Double(startX, startY, width, height);
+
+
+        // Get canvas graphics
         Graphics2D canvasGraphics = canvas.getGraphics2D();
-        canvasGraphics.setColor(Color.BLACK);
-        canvasGraphics.fill(ellipse);
+
+        // Draw ellipse
+        IFillStrategy strategy = FillStrategyFactory.getStrategy(shading);
+        strategy.draw(ellipse,primaryColor,secondaryColor,canvasGraphics);
     }
 }

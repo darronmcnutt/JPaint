@@ -1,6 +1,7 @@
 package model;
 
 import model.interfaces.IDrawShapeStrategy;
+import model.interfaces.IFillStrategy;
 import view.gui.PaintCanvas;
 import java.awt.*;
 
@@ -12,13 +13,17 @@ public class DrawRectangleStrategy implements IDrawShapeStrategy {
         // Get boundary rectangle from shape
         Rectangle rectangle = shape.getBoundary();
 
-        // Draw rectangle
+        // Unpack shape configuration
+        Color primaryColor = shape.getPrimaryColor();
+        Color secondaryColor = shape.getSecondaryColor();
+        ShapeShadingType shading = shape.getShading();
+
+        // Get canvas graphics
         Graphics2D canvasGraphics = canvas.getGraphics2D();
-        canvasGraphics.setColor(Color.BLACK);
-        canvasGraphics.draw(rectangle);
+
+        // Draw rectangle
+        IFillStrategy strategy = FillStrategyFactory.getStrategy(shading);
+        strategy.draw(rectangle,primaryColor,secondaryColor,canvasGraphics);
 
     }
-
-
-
 }

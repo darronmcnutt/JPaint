@@ -28,7 +28,6 @@ public class MoveShape implements ICommand, IUndoable {
         for (Shape shape : shapeList) {
             if (shape.getBoundary().contains(startX,startY)) {
                 this.originalShape = shape;
-                break;
             }
         }
 

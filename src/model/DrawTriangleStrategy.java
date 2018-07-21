@@ -1,6 +1,7 @@
 package model;
 
 import model.interfaces.IDrawShapeStrategy;
+import model.interfaces.IFillStrategy;
 import view.gui.PaintCanvas;
 
 import java.awt.*;
@@ -17,17 +18,23 @@ public class DrawTriangleStrategy implements IDrawShapeStrategy {
         int endX = shape.getEndPoint().getX();
         int endY = shape.getEndPoint().getY();
 
+        // Unpack shape configuration
+        Color primaryColor = shape.getPrimaryColor();
+        Color secondaryColor = shape.getSecondaryColor();
+        ShapeShadingType shading = shape.getShading();
+
         // Construct the triangle
         GeneralPath triangle = new GeneralPath();
-        triangle.moveTo(startX,startY);
-        triangle.lineTo(endX,endY);
-        triangle.lineTo(startX,endY);
-        triangle.lineTo(startX,startY);
+        triangle.moveTo(startX, startY);
+        triangle.lineTo(endX, endY);
+        triangle.lineTo(startX, endY);
+        triangle.lineTo(startX, startY);
 
-        // Draw the triangle
+        // Get canvas graphics
         Graphics2D canvasGraphics = canvas.getGraphics2D();
-        canvasGraphics.setColor(Color.BLACK);
-        canvasGraphics.fill(triangle);
 
+        // Draw rectangle
+        IFillStrategy strategy = FillStrategyFactory.getStrategy(shading);
+        strategy.draw(triangle,primaryColor,secondaryColor,canvasGraphics);
     }
 }

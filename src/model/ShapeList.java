@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -12,7 +13,6 @@ public class ShapeList implements Iterable<Shape> {
     public ShapeList() {
         shapes = new ArrayList<Shape>();
     }
-
 
     public void registerObserver(ShapeDrawer drawer) {
         this.drawer = drawer;
