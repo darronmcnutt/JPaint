@@ -1,5 +1,9 @@
-package model;
+package model.commands;
 
+import model.CommandHistory;
+import model.PairInt;
+import model.Shape;
+import model.ShapeList;
 import model.interfaces.ICommand;
 import model.interfaces.IUndoable;
 
@@ -9,8 +13,8 @@ import java.io.IOException;
 public class MoveShape implements ICommand, IUndoable {
 
     ShapeList shapeList;
-    Shape originalShape;
-    Shape newShape;
+    model.Shape originalShape;
+    model.Shape newShape;
 
     public MoveShape(PairInt startPoint, PairInt endPoint, ShapeList shapeList) {
 
@@ -25,7 +29,7 @@ public class MoveShape implements ICommand, IUndoable {
 
 
         // Find shape to be moved
-        for (Shape shape : shapeList) {
+        for (model.Shape shape : shapeList) {
             if (shape.getBoundary().contains(startX,startY)) {
                 this.originalShape = shape;
             }

@@ -1,5 +1,6 @@
 package model;
 
+import model.drawstrategies.DrawShapeStrategyFactory;
 import model.interfaces.IDrawShapeStrategy;
 import view.gui.PaintCanvas;
 

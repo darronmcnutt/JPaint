@@ -1,5 +1,6 @@
-package model;
+package model.commands;
 
+import model.CommandHistory;
 import model.interfaces.ICommand;
 
 import java.io.IOException;

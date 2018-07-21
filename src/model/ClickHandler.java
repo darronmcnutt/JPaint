@@ -1,5 +1,8 @@
 package model;
 
+import model.commands.CreateShape;
+import model.commands.MoveShape;
+import model.commands.SelectShape;
 import model.interfaces.IApplicationState;
 import model.interfaces.ICommand;
 import view.gui.PaintCanvas;
@@ -48,7 +51,8 @@ public class ClickHandler extends MouseAdapter {
                 command = new MoveShape(clickPoint,releasePoint,shapeList);
                 break;
             case SELECT:
-                command = new SelectShape(clickPoint,releasePoint,shapeList);
+
+                command = new SelectShape(clickPoint,releasePoint,shapeList,appState.getCurrentShapeConfiguration());
                 break;
             default:
                 throw new IllegalStateException();

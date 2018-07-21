@@ -1,5 +1,6 @@
-package model;
+package model.fillstrategies;
 
+import model.ShapeShadingType;
 import model.interfaces.IFillStrategy;
 
 public class FillStrategyFactory {

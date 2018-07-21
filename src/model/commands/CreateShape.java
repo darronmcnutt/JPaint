@@ -1,5 +1,6 @@
-package model;
+package model.commands;
 
+import model.*;
 import model.interfaces.ICommand;
 import model.interfaces.IUndoable;
 

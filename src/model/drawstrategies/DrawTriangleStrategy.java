@@ -1,5 +1,8 @@
-package model;
+package model.drawstrategies;
 
+import model.Shape;
+import model.ShapeShadingType;
+import model.fillstrategies.FillStrategyFactory;
 import model.interfaces.IDrawShapeStrategy;
 import model.interfaces.IFillStrategy;
 import view.gui.PaintCanvas;
