@@ -53,7 +53,7 @@ public class ClickHandler extends MouseAdapter {
                 command = new CreateShape(clickPoint,releasePoint,shapeConfiguration,masterShapeList);
                 break;
             case MOVE:
-                command = new MoveShape(clickPoint,releasePoint,masterShapeList);
+                command = new MoveShape(clickPoint,releasePoint,shapeListManager);
                 break;
             case SELECT:
                 command = new SelectShape(clickPoint,releasePoint,shapeListManager);
