@@ -1,4 +1,6 @@
-package model;
+package model.utilities;
+
+import model.ShapeColor;
 
 import java.awt.Color;
 import java.util.EnumMap;

@@ -2,10 +2,10 @@ package model.commands;
 
 import model.*;
 import model.interfaces.ICommand;
+import model.utilities.RectangleGenerator;
 
 import java.awt.Rectangle;
 import java.io.IOException;
-import java.util.ArrayList;
 
 
 public class SelectShape implements ICommand {

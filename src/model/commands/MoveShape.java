@@ -3,6 +3,7 @@ package model.commands;
 import model.*;
 import model.interfaces.ICommand;
 import model.interfaces.IUndoable;
+import model.utilities.MovedShapeGenerator;
 
 import java.io.IOException;
 
@@ -80,5 +81,5 @@ public class MoveShape implements ICommand, IUndoable {
         }
 
     }
-    
+
 }

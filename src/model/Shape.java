@@ -1,5 +1,8 @@
 package model;
 
+import model.utilities.RectangleGenerator;
+import model.utilities.ShapeColorMap;
+
 import java.awt.*;
 
 public class Shape {

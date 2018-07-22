@@ -1,4 +1,6 @@
-package model;
+package model.utilities;
+
+import model.PairInt;
 
 import java.awt.Rectangle;
 
