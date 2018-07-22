@@ -1,10 +1,7 @@
 package controller;
 
 import model.ShapeListManager;
-import model.commands.CopyCommand;
-import model.commands.PasteCommand;
-import model.commands.RedoCommand;
-import model.commands.UndoCommand;
+import model.commands.*;
 import model.interfaces.IApplicationState;
 import view.EventName;
 import view.interfaces.IUiModule;
@@ -64,6 +61,14 @@ public class JPaintController implements IJPaintController {
         uiModule.addEvent(EventName.PASTE, () -> {
             try {
                 new PasteCommand(shapeListManager).run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        uiModule.addEvent(EventName.DELETE, () -> {
+            try {
+                new DeleteCommand(shapeListManager).run();
             } catch (IOException e) {
                 e.printStackTrace();
             }
