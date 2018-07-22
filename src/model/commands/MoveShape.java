@@ -7,16 +7,16 @@ import model.ShapeList;
 import model.interfaces.ICommand;
 import model.interfaces.IUndoable;
 
-import java.awt.*;
 import java.io.IOException;
 
 public class MoveShape implements ICommand, IUndoable {
 
-    ShapeList shapeList;
-    model.Shape originalShape;
-    model.Shape newShape;
+    private ShapeList shapeList;
+    private Shape originalShape;
+    private Shape newShape;
 
     public MoveShape(PairInt startPoint, PairInt endPoint, ShapeList shapeList) {
+        // UPDATE THIS TO WORK WITH ALL SELECTED SHAPES
 
         // Initialize shapeList field
         this.shapeList = shapeList;

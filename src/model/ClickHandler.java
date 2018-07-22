@@ -15,13 +15,15 @@ public class ClickHandler extends MouseAdapter {
 
     private final PaintCanvas canvas;
     private final IApplicationState appState;
-    private final ShapeList shapeList;
+    private final ShapeListManager shapeListManager;
+    private ShapeList masterShapeList;
     private PairInt clickPoint;
     private PairInt releasePoint;
 
-    public ClickHandler(PaintCanvas canvas, IApplicationState appState, ShapeList shapeList) {
+    public ClickHandler(PaintCanvas canvas, IApplicationState appState, ShapeListManager shapeListManager) {
         this.appState = appState;
-        this.shapeList = shapeList;
+        this.shapeListManager = shapeListManager;
+        this.masterShapeList = shapeListManager.getMasterShapeList();
         this.canvas = canvas;
         canvas.addMouseListener(this);
     }
@@ -29,6 +31,9 @@ public class ClickHandler extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
         clickPoint = new PairInt(e.getX(), e.getY());
+        if (e.getButton() == MouseEvent.BUTTON3) {
+            System.out.println("Right click");
+        }
         System.out.println(clickPoint);
     }
 
@@ -45,14 +50,13 @@ public class ClickHandler extends MouseAdapter {
         switch(startAndEndPointMode) {
             case DRAW:
                 ShapeConfiguration shapeConfiguration = appState.getCurrentShapeConfiguration();
-                command = new CreateShape(clickPoint,releasePoint,shapeConfiguration,shapeList);
+                command = new CreateShape(clickPoint,releasePoint,shapeConfiguration,masterShapeList);
                 break;
             case MOVE:
-                command = new MoveShape(clickPoint,releasePoint,shapeList);
+                command = new MoveShape(clickPoint,releasePoint,masterShapeList);
                 break;
             case SELECT:
-
-                command = new SelectShape(clickPoint,releasePoint,shapeList,appState.getCurrentShapeConfiguration());
+                command = new SelectShape(clickPoint,releasePoint,shapeListManager);
                 break;
             default:
                 throw new IllegalStateException();

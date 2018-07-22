@@ -1,7 +1,6 @@
 package model;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,12 +19,17 @@ public class ShapeList implements Iterable<Shape> {
 
     public void add(Shape shape) {
         shapes.add(shape);
-        drawer.update();
+        if (drawer != null) { drawer.update(); }
     }
 
     public void remove(Shape shape) {
         shapes.remove(shape);
-        drawer.update();
+        if (drawer != null) { drawer.update(); }
+    }
+
+    public void clear() {
+        shapes.clear();
+        if (drawer != null) { drawer.update(); }
     }
 
     @Override

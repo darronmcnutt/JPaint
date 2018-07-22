@@ -9,42 +9,46 @@ import java.util.ArrayList;
 
 
 public class SelectShape implements ICommand {
-    private ArrayList<Shape> selected = new ArrayList<>();
-    private ShapeConfiguration shapeConfiguration;
-    private ShapeList shapeList;
+    private ShapeList masterShapeList;
+    private ShapeList selectedShapeList;
 
-    public SelectShape(PairInt startPoint, PairInt endPoint, ShapeList shapeList, ShapeConfiguration shapeConfiguration) {
+    private int startX;
+    private int startY;
+
+    private Rectangle selectBoundary;
+
+    public SelectShape(PairInt startPoint, PairInt endPoint, ShapeListManager shapeListManager) {
 
         // Initialize fields
-        this.shapeConfiguration = shapeConfiguration;
-        this.shapeList = shapeList;
-
-        Rectangle selectBoundary = RectangleGenerator.generate(startPoint,endPoint);
-        Rectangle shapeBoundary;
+        this.masterShapeList = shapeListManager.getMasterShapeList();
+        this.selectedShapeList = shapeListManager.getSelectedShapeList();
+        this.selectBoundary = RectangleGenerator.generate(startPoint,endPoint);
 
         // Unpack points
-        int startX = startPoint.getX();
-        int startY = startPoint.getY();
+        this.startX = startPoint.getX();
+        this.startY = startPoint.getY();
 
-        // Find shapes to be selected
-        for (Shape shape : shapeList) {
 
-            shapeBoundary = shape.getBoundary();
-
-            if (shapeBoundary.intersects(selectBoundary) ||
-                    shapeBoundary.contains(startX,startY)) {
-                selected.add(shape);
-            }
-        }
 
     }
 
     @Override
     public void run() throws IOException {
-        for (Shape shape : selected) {
-            Shape newShape = new Shape(shape.getStartPoint(),shape.getEndPoint(),shapeConfiguration);
-            shapeList.remove(shape);
-            shapeList.add(newShape);
+
+        // Remove all elements from the list of of selected shapes
+        selectedShapeList.clear();
+
+        Rectangle shapeBoundary;
+
+        // Add elements to the selected shapes list
+        for (Shape shape : masterShapeList) {
+
+            shapeBoundary = shape.getBoundary();
+
+            if (shapeBoundary.intersects(selectBoundary) ||
+                    shapeBoundary.contains(startX,startY)) {
+                selectedShapeList.add(shape);
+            }
         }
     }
 }

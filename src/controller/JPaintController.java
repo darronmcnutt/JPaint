@@ -1,5 +1,8 @@
 package controller;
 
+import model.ShapeListManager;
+import model.commands.CopyCommand;
+import model.commands.PasteCommand;
 import model.commands.RedoCommand;
 import model.commands.UndoCommand;
 import model.interfaces.IApplicationState;
@@ -11,13 +14,15 @@ import java.io.IOException;
 public class JPaintController implements IJPaintController {
     private final IUiModule uiModule;
     private final IApplicationState applicationState;
+    private final ShapeListManager shapeListManager;
 
     private final UndoCommand undoCommand = new UndoCommand();
     private final RedoCommand redoCommand = new RedoCommand();
 
-    public JPaintController(IUiModule uiModule, IApplicationState applicationState) {
+    public JPaintController(IUiModule uiModule, IApplicationState applicationState, ShapeListManager shapeListManager) {
         this.uiModule = uiModule;
         this.applicationState = applicationState;
+        this.shapeListManager = shapeListManager;
     }
 
     @Override
@@ -43,6 +48,22 @@ public class JPaintController implements IJPaintController {
         uiModule.addEvent(EventName.REDO, () -> {
             try {
                 redoCommand.run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        uiModule.addEvent(EventName.COPY, () -> {
+            try {
+                new CopyCommand(shapeListManager).run();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        uiModule.addEvent(EventName.PASTE, () -> {
+            try {
+                new PasteCommand(shapeListManager).run();
             } catch (IOException e) {
                 e.printStackTrace();
             }

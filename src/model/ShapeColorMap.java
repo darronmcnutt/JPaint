@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.EnumMap;
 
 
-public class ShapeColorMap {
+public final class ShapeColorMap {
 
     private static final EnumMap<ShapeColor,Color> colorMap
             = new EnumMap<ShapeColor,Color>(ShapeColor.class);
