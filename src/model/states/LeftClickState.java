@@ -6,9 +6,7 @@ import model.interfaces.IClickState;
 
 public class LeftClickState implements IClickState {
 
-    public LeftClickState() {
-
-    }
+    public LeftClickState() { }
 
     @Override
     public ShapeConfiguration getConfiguration(IApplicationState appState) {

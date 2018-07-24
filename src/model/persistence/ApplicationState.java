@@ -4,9 +4,13 @@ import model.*;
 import model.dialogs.DialogProvider;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
+import model.interfaces.IStateObserver;
+import model.interfaces.IStateSubject;
 import view.interfaces.IUiModule;
 
-public class ApplicationState implements IApplicationState {
+import static model.StartAndEndPointMode.SELECT;
+
+public class ApplicationState implements IApplicationState, IStateSubject {
     private final IUiModule uiModule;
     private final IDialogProvider dialogProvider;
 
@@ -16,10 +20,22 @@ public class ApplicationState implements IApplicationState {
     private ShapeShadingType activeShapeShadingType;
     private StartAndEndPointMode activeStartAndEndPointMode;
 
+    private IStateObserver stateObserver;
+
     public ApplicationState(IUiModule uiModule) {
         this.uiModule = uiModule;
         this.dialogProvider = new DialogProvider(this);
         setDefaults();
+    }
+
+    @Override
+    public void registerObserver(IStateObserver observer) {
+        this.stateObserver = observer;
+    }
+
+    @Override
+    public void notifyObserver() {
+        stateObserver.update();
     }
 
     @Override
@@ -30,16 +46,25 @@ public class ApplicationState implements IApplicationState {
     @Override
     public void setActivePrimaryColor() {
         activePrimaryColor = uiModule.getDialogResponse(dialogProvider.getChoosePrimaryColorDialog());
+        if (activeStartAndEndPointMode == SELECT) {
+            notifyObserver();
+        }
     }
 
     @Override
     public void setActiveSecondaryColor() {
         activeSecondaryColor = uiModule.getDialogResponse(dialogProvider.getChooseSecondaryColorDialog());
+        if (activeStartAndEndPointMode == SELECT) {
+            notifyObserver();
+        }
     }
 
     @Override
     public void setActiveShadingType() {
         activeShapeShadingType = uiModule.getDialogResponse(dialogProvider.getChooseShadingTypeDialog());
+        if (activeStartAndEndPointMode == SELECT) {
+            notifyObserver();
+        }
     }
 
     @Override
@@ -85,4 +110,6 @@ public class ApplicationState implements IApplicationState {
         activeShapeShadingType = ShapeShadingType.OUTLINE_AND_FILLED_IN;
         activeStartAndEndPointMode = StartAndEndPointMode.DRAW;
     }
+
+
 }

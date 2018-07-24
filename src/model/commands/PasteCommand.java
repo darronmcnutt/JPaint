@@ -8,14 +8,13 @@ import model.utilities.MovedShapeGenerator;
 import java.io.IOException;
 
 public class PasteCommand implements ICommand,IUndoable {
-    private ShapeList clipboard;
-    private ShapeList masterShapeList;
-    private ShapeList pastedShapes;
+    private final ShapeList clipboard;
+    private final ShapeList masterShapeList;
+    private final ShapeList pastedShapes = new ShapeList();
 
     public PasteCommand(ShapeListManager shapeListManager) {
         this.clipboard = shapeListManager.getClipboard();
         this.masterShapeList = shapeListManager.getMasterShapeList();
-        this.pastedShapes = new ShapeList();
     }
 
     @Override

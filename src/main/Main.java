@@ -14,28 +14,34 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args){
-        // Create paint canvas
+
+        // Initialize paint canvas
         PaintCanvas canvas = new PaintCanvas();
 
-        // Create shape lists
+        // Initialize shape lists
         ShapeList masterShapeList = new ShapeList();
         ShapeList selectedShapes = new ShapeList();
         ShapeList clipboard = new ShapeList();
 
-        // Create shape drawer
+        // Initialize shape drawer
         ShapeDrawer drawer = new ShapeDrawer(masterShapeList, canvas);
 
         // Add observer to the master shape list
         masterShapeList.registerObserver(drawer);
 
-        // Create shape list manager
+        // Initialize shape list manager
         ShapeListManager shapeListManager = new ShapeListManager(masterShapeList,selectedShapes,clipboard);
 
         IGuiWindow guiWindow = new GuiWindow(canvas);
         IUiModule uiModule = new Gui(guiWindow);
+
         ApplicationState appState = new ApplicationState(uiModule);
+        StateObserver stateObserver = new StateObserver(appState,shapeListManager);
+        appState.registerObserver(stateObserver);
+
         IJPaintController controller = new JPaintController(uiModule, appState, shapeListManager);
         ClickHandler clickHandler = new ClickHandler(canvas, appState, shapeListManager);
+        KeyboardHandler keyboardHandler = new KeyboardHandler(canvas,shapeListManager);
         controller.setup();
     }
 }

@@ -1,10 +1,10 @@
 package model;
 
 public class ShapeConfiguration {
-    private ShapeType shapeType;
-    private ShapeColor primaryColor;
-    private ShapeColor secondaryColor;
-    private ShapeShadingType shadingType;
+    private final ShapeType shapeType;
+    private final ShapeColor primaryColor;
+    private final ShapeColor secondaryColor;
+    private final ShapeShadingType shadingType;
 
     public ShapeConfiguration(ShapeType shapeType, ShapeColor primaryColor, ShapeColor secondaryColor,
                               ShapeShadingType shadingType) {

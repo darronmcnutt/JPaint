@@ -22,7 +22,7 @@ public class DrawEllipseStrategy implements IDrawShapeStrategy {
         double startX = rectangle.getX();
         double startY = rectangle.getY();
 
-        // Get rectangle width and height
+        // Unpack rectangle width and height
         double width = rectangle.getWidth();
         double height = rectangle.getHeight();
 
@@ -34,12 +34,11 @@ public class DrawEllipseStrategy implements IDrawShapeStrategy {
         // Create ellipse
         Ellipse2D.Double ellipse = new Ellipse2D.Double(startX, startY, width, height);
 
-
         // Get canvas graphics
         Graphics2D canvasGraphics = canvas.getGraphics2D();
 
         // Draw ellipse
-        IFillStrategy strategy = FillStrategyFactory.getStrategy(shading);
-        strategy.draw(ellipse,primaryColor,secondaryColor,canvasGraphics);
+        IFillStrategy fillStrategy = FillStrategyFactory.getStrategy(shading);
+        fillStrategy.draw(ellipse,primaryColor,secondaryColor,canvasGraphics);
     }
 }

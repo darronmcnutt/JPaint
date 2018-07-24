@@ -9,13 +9,13 @@ import java.io.IOException;
 
 
 public class SelectShape implements ICommand {
-    private ShapeList masterShapeList;
-    private ShapeList selectedShapeList;
+    private final ShapeList masterShapeList;
+    private final ShapeList selectedShapeList;
 
-    private int startX;
-    private int startY;
+    private final int startX;
+    private final int startY;
 
-    private Rectangle selectBoundary;
+    private final Rectangle selectBoundary;
 
     public SelectShape(PairInt startPoint, PairInt endPoint, ShapeListManager shapeListManager) {
 
@@ -27,8 +27,6 @@ public class SelectShape implements ICommand {
         // Unpack points
         this.startX = startPoint.getX();
         this.startY = startPoint.getY();
-
-
 
     }
 

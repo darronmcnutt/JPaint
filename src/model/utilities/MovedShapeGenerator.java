@@ -12,7 +12,6 @@ public class MovedShapeGenerator {
         int endX = endMove.getX();
         int endY = endMove.getY();
 
-
         // Calculate new start and endpoints
         int xDiff = endX - startX;
         int yDiff = endY - startY;
@@ -23,7 +22,7 @@ public class MovedShapeGenerator {
         endMove = new PairInt(shape.getEndPoint().getX() + xDiff,
                 shape.getEndPoint().getY() + yDiff);
 
-        // Generate new shape
+        // Generate new shape with updated start and end points
         return new Shape(startMove,endMove,shape.getShapeConfiguration());
 
     }

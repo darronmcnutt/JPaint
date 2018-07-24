@@ -27,9 +27,11 @@ public class RectangleGenerator {
             startY = temp;
         }
 
+        // Calculate rectangle width and height
         int width = endX - startX;
         int height = endY - startY;
 
+        // Returns a java.awt.Rectangle object
         return new Rectangle(startX,startY,width,height);
     }
 }

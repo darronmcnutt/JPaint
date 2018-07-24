@@ -10,9 +10,9 @@ import model.interfaces.IUndoable;
 import java.io.IOException;
 
 public class DeleteCommand implements ICommand,IUndoable {
-    private ShapeList masterShapeList;
-    private ShapeList selectedShapes;
-    private ShapeList deletedShapes = new ShapeList();
+    private final ShapeList masterShapeList;
+    private final ShapeList selectedShapes;
+    private final ShapeList deletedShapes = new ShapeList();
 
     public DeleteCommand(ShapeListManager shapeListManager) {
         this.selectedShapes = shapeListManager.getSelectedShapeList();

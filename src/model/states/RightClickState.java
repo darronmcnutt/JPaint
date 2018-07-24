@@ -8,12 +8,12 @@ import model.interfaces.IApplicationState;
 import model.interfaces.IClickState;
 
 public class RightClickState implements IClickState {
-    public RightClickState() {
-    }
+    public RightClickState() { }
 
     @Override
     public ShapeConfiguration getConfiguration(IApplicationState appState) {
 
+        // Get current shape configuration from the application state
         ShapeConfiguration shapeConfiguration = appState.getCurrentShapeConfiguration();
 
         // Unpack shape configuration
@@ -22,7 +22,7 @@ public class RightClickState implements IClickState {
         ShapeColor secondaryColor = shapeConfiguration.getSecondaryColor();
         ShapeShadingType shadingType = shapeConfiguration.getShadingType();
 
-        // Swap primary and secondary colors
+        // Swap primary and secondary colors and return new shape configuration
         return new ShapeConfiguration(shapeType,secondaryColor,primaryColor,shadingType);
 
     }

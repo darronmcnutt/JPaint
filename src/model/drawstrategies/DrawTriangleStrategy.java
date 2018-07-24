@@ -36,8 +36,8 @@ public class DrawTriangleStrategy implements IDrawShapeStrategy {
         // Get canvas graphics
         Graphics2D canvasGraphics = canvas.getGraphics2D();
 
-        // Draw rectangle
-        IFillStrategy strategy = FillStrategyFactory.getStrategy(shading);
-        strategy.draw(triangle,primaryColor,secondaryColor,canvasGraphics);
+        // Draw triangle
+        IFillStrategy fillStrategy = FillStrategyFactory.getStrategy(shading);
+        fillStrategy.draw(triangle,primaryColor,secondaryColor,canvasGraphics);
     }
 }

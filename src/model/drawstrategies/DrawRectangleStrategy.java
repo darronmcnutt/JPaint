@@ -26,8 +26,8 @@ public class DrawRectangleStrategy implements IDrawShapeStrategy {
         Graphics2D canvasGraphics = canvas.getGraphics2D();
 
         // Draw rectangle
-        IFillStrategy strategy = FillStrategyFactory.getStrategy(shading);
-        strategy.draw(rectangle,primaryColor,secondaryColor,canvasGraphics);
+        IFillStrategy fillStrategy = FillStrategyFactory.getStrategy(shading);
+        fillStrategy.draw(rectangle,primaryColor,secondaryColor,canvasGraphics);
 
     }
 }

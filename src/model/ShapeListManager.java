@@ -1,9 +1,9 @@
 package model;
 
 public class ShapeListManager {
-    ShapeList masterShapeList;
-    ShapeList selectedShapeList;
-    ShapeList clipboard;
+    private final ShapeList masterShapeList;
+    private final ShapeList selectedShapeList;
+    private final ShapeList clipboard;
 
     public ShapeListManager(ShapeList masterShapeList, ShapeList selectedShapeList, ShapeList clipboard) {
         this.masterShapeList = masterShapeList;

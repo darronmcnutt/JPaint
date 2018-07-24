@@ -9,8 +9,8 @@ import java.io.IOException;
 
 public class CopyCommand implements ICommand {
 
-    private ShapeList selectedShapes;
-    private ShapeList clipboard;
+    private final ShapeList selectedShapes;
+    private final ShapeList clipboard;
 
     public CopyCommand(ShapeListManager shapeListManager) {
         this.selectedShapes = shapeListManager.getSelectedShapeList();

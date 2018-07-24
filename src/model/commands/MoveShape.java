@@ -9,10 +9,10 @@ import java.io.IOException;
 
 public class MoveShape implements ICommand, IUndoable {
 
-    private ShapeList masterShapeList;
-    private ShapeList selectedShapes;
-    private ShapeList movedShapes = new ShapeList();
-    private ShapeList originalShapes = new ShapeList();
+    private final ShapeList masterShapeList;
+    private final ShapeList selectedShapes;
+    private final ShapeList movedShapes = new ShapeList();
+    private final ShapeList originalShapes = new ShapeList();
 
     public MoveShape(PairInt startPoint, PairInt endPoint, ShapeListManager shapeListManager) {
         this.masterShapeList = shapeListManager.getMasterShapeList();

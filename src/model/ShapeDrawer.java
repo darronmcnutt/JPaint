@@ -22,7 +22,7 @@ public class ShapeDrawer {
         canvasGraphics.setColor(Color.WHITE);
         canvasGraphics.fillRect(0,0,canvas.getWidth(),canvas.getHeight());
 
-        // Draw all shapes form the shape list
+        // Draw all shapes from the shape list
         for(Shape shape : shapeList) {
             IDrawShapeStrategy drawStrategy = DrawShapeStrategyFactory.getStrategy(shape);
             drawStrategy.draw(shape,canvas);
