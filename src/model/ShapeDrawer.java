@@ -3,11 +3,12 @@ package model;
 import model.dataobjects.Shape;
 import model.drawstrategies.DrawShapeStrategyFactory;
 import model.interfaces.IDrawShapeStrategy;
+import model.interfaces.IShapeListObserver;
 import view.gui.PaintCanvas;
 
 import java.awt.*;
 
-public class ShapeDrawer {
+public class ShapeDrawer implements IShapeListObserver {
     private final ShapeList shapeList;
     private final PaintCanvas canvas;
 

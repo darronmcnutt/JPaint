@@ -1,37 +1,51 @@
 package model;
 
 import model.dataobjects.Shape;
+import model.interfaces.IShapeListObserver;
+import model.interfaces.IShapeListSubject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ShapeList implements Iterable<Shape> {
+public class ShapeList implements Iterable<Shape>, IShapeListSubject {
 
     private List<Shape> shapes;
-    private ShapeDrawer drawer;
+    private List<IShapeListObserver> observers;
 
     public ShapeList() {
         shapes = new ArrayList<Shape>();
+        observers = new ArrayList<IShapeListObserver>();
     }
 
-    public void registerObserver(ShapeDrawer drawer) {
-        this.drawer = drawer;
+    public void registerObserver(IShapeListObserver observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(IShapeListObserver observer) {
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        for (IShapeListObserver observer : observers) {
+            observer.update();
+        }
     }
 
     public void add(Shape shape) {
         shapes.add(shape);
-        if (drawer != null) { drawer.update(); }
+        notifyObservers();
     }
 
     public void remove(Shape shape) {
         shapes.remove(shape);
-        if (drawer != null) { drawer.update(); }
+        notifyObservers();
     }
 
     public void clear() {
         shapes.clear();
-        if (drawer != null) { drawer.update(); }
+        notifyObservers();
     }
 
     @Override
