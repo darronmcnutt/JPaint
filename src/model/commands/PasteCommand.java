@@ -1,6 +1,9 @@
 package model.commands;
 
 import model.*;
+import model.dataobjects.PairInt;
+import model.dataobjects.Shape;
+import model.dataobjects.ShapeListManager;
 import model.interfaces.ICommand;
 import model.interfaces.IUndoable;
 import model.utilities.MovedShapeGenerator;

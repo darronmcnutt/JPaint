@@ -1,7 +1,7 @@
 package model.utilities;
 
-import model.PairInt;
-import model.Shape;
+import model.dataobjects.PairInt;
+import model.dataobjects.Shape;
 
 public class MovedShapeGenerator {
     public static Shape generate (Shape shape, PairInt startMove, PairInt endMove) {

@@ -1,4 +1,4 @@
-package model;
+package model.dataobjects;
 
 public class PairInt {
     private final int x;

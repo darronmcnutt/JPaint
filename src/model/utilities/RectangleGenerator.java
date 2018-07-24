@@ -1,6 +1,6 @@
 package model.utilities;
 
-import model.PairInt;
+import model.dataobjects.PairInt;
 
 import java.awt.Rectangle;
 

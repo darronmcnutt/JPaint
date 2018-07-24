@@ -1,6 +1,6 @@
 package model.actions;
 
-import model.ShapeListManager;
+import model.dataobjects.ShapeListManager;
 import model.commands.DeleteCommand;
 
 import javax.swing.*;

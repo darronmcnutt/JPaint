@@ -1,6 +1,7 @@
 package model;
 
 import model.actions.*;
+import model.dataobjects.ShapeListManager;
 import view.gui.PaintCanvas;
 
 import javax.swing.*;
@@ -10,7 +11,7 @@ public class KeyboardHandler {
 
     public KeyboardHandler(PaintCanvas canvas, ShapeListManager shapeListManager) {
 
-        // Create action wrappers for commands
+        // Create swing action wrappers for commands
         AbstractAction copyAction = new CopyAction(shapeListManager);
         AbstractAction pasteAction = new PasteAction(shapeListManager);
         AbstractAction undoAction = new UndoAction();

@@ -1,13 +1,15 @@
 package model.commands;
 
 import model.*;
+import model.dataobjects.Shape;
+import model.dataobjects.ShapeConfiguration;
+import model.dataobjects.ShapeListManager;
 import model.interfaces.ICommand;
 import model.interfaces.IUndoable;
-import model.persistence.ApplicationState;
 
 import java.io.IOException;
 
-public class UpdateCommand implements ICommand, IUndoable {
+public class UpdateShapeConfigCommand implements ICommand, IUndoable {
 
     private final ShapeList selected;
     private final ShapeList masterShapeList;
@@ -18,12 +20,9 @@ public class UpdateCommand implements ICommand, IUndoable {
     private final ShapeColor secondaryColor;
     private final ShapeShadingType shadingType;
 
-    public UpdateCommand(ShapeListManager shapeListManager, ApplicationState appState) {
+    public UpdateShapeConfigCommand(ShapeListManager shapeListManager, ShapeConfiguration shapeConfiguration) {
         this.selected = shapeListManager.getSelectedShapeList();
         this.masterShapeList = shapeListManager.getMasterShapeList();
-
-        // Get current shape configuration from the application state
-        ShapeConfiguration shapeConfiguration = appState.getCurrentShapeConfiguration();
 
         // Unpack shape configuration
         primaryColor = shapeConfiguration.getPrimaryColor();

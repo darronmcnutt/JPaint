@@ -1,7 +1,7 @@
 package model.states;
 
 import model.ShapeColor;
-import model.ShapeConfiguration;
+import model.dataobjects.ShapeConfiguration;
 import model.ShapeShadingType;
 import model.ShapeType;
 import model.interfaces.IApplicationState;

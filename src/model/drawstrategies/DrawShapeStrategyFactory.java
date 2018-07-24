@@ -1,6 +1,6 @@
 package model.drawstrategies;
 
-import model.Shape;
+import model.dataobjects.Shape;
 import model.ShapeType;
 import model.interfaces.IDrawShapeStrategy;
 

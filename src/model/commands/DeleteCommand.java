@@ -1,9 +1,9 @@
 package model.commands;
 
 import model.CommandHistory;
-import model.Shape;
+import model.dataobjects.Shape;
 import model.ShapeList;
-import model.ShapeListManager;
+import model.dataobjects.ShapeListManager;
 import model.interfaces.ICommand;
 import model.interfaces.IUndoable;
 

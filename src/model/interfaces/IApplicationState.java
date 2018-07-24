@@ -1,6 +1,7 @@
 package model.interfaces;
 
 import model.*;
+import model.dataobjects.ShapeConfiguration;
 
 public interface IApplicationState {
     void setActiveShape();

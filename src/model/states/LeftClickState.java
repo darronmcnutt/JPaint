@@ -1,6 +1,6 @@
 package model.states;
 
-import model.ShapeConfiguration;
+import model.dataobjects.ShapeConfiguration;
 import model.interfaces.IApplicationState;
 import model.interfaces.IClickState;
 

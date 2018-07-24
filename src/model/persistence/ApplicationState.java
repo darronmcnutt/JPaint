@@ -1,16 +1,17 @@
 package model.persistence;
 
 import model.*;
+import model.dataobjects.ShapeConfiguration;
 import model.dialogs.DialogProvider;
 import model.interfaces.IApplicationState;
 import model.interfaces.IDialogProvider;
-import model.interfaces.IStateObserver;
-import model.interfaces.IStateSubject;
+import model.interfaces.IApplicationStateObserver;
+import model.interfaces.IApplicationStateSubject;
 import view.interfaces.IUiModule;
 
 import static model.StartAndEndPointMode.SELECT;
 
-public class ApplicationState implements IApplicationState, IStateSubject {
+public class ApplicationState implements IApplicationState, IApplicationStateSubject {
     private final IUiModule uiModule;
     private final IDialogProvider dialogProvider;
 
@@ -20,7 +21,7 @@ public class ApplicationState implements IApplicationState, IStateSubject {
     private ShapeShadingType activeShapeShadingType;
     private StartAndEndPointMode activeStartAndEndPointMode;
 
-    private IStateObserver stateObserver;
+    private IApplicationStateObserver stateObserver;
 
     public ApplicationState(IUiModule uiModule) {
         this.uiModule = uiModule;
@@ -29,13 +30,13 @@ public class ApplicationState implements IApplicationState, IStateSubject {
     }
 
     @Override
-    public void registerObserver(IStateObserver observer) {
+    public void registerObserver(IApplicationStateObserver observer) {
         this.stateObserver = observer;
     }
 
     @Override
     public void notifyObserver() {
-        stateObserver.update();
+        stateObserver.update(this.getCurrentShapeConfiguration());
     }
 
     @Override

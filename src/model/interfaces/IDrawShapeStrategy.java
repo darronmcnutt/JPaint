@@ -1,6 +1,6 @@
 package model.interfaces;
 
-import model.Shape;
+import model.dataobjects.Shape;
 import view.gui.PaintCanvas;
 
 public interface IDrawShapeStrategy {

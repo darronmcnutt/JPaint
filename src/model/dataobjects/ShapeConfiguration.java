@@ -1,4 +1,8 @@
-package model;
+package model.dataobjects;
+
+import model.ShapeColor;
+import model.ShapeShadingType;
+import model.ShapeType;
 
 public class ShapeConfiguration {
     private final ShapeType shapeType;

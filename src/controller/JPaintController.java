@@ -1,6 +1,6 @@
 package controller;
 
-import model.ShapeListManager;
+import model.dataobjects.ShapeListManager;
 import model.commands.*;
 import model.interfaces.IApplicationState;
 import view.EventName;

@@ -1,4 +1,6 @@
-package model;
+package model.dataobjects;
+
+import model.ShapeList;
 
 public class ShapeListManager {
     private final ShapeList masterShapeList;

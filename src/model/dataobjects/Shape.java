@@ -1,5 +1,7 @@
-package model;
+package model.dataobjects;
 
+import model.ShapeShadingType;
+import model.ShapeType;
 import model.utilities.RectangleGenerator;
 import model.utilities.ShapeColorMap;
 
