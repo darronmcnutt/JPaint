@@ -22,14 +22,14 @@ public class Main {
         ShapeList selectedShapes = new ShapeList();
         ShapeList clipboard = new ShapeList();
 
+        // Initialize shape list manager
+        ShapeListManager shapeListManager = new ShapeListManager(masterShapeList,selectedShapes,clipboard);
+
         // Initialize shape drawer
         ShapeDrawer drawer = new ShapeDrawer(masterShapeList, canvas);
 
         // Add observer to the master shape list
         masterShapeList.registerObserver(drawer);
-
-        // Initialize shape list manager
-        ShapeListManager shapeListManager = new ShapeListManager(masterShapeList,selectedShapes,clipboard);
 
         // Initialize gui
         IGuiWindow guiWindow = new GuiWindow(canvas);

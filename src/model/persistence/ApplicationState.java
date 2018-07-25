@@ -9,6 +9,9 @@ import model.interfaces.IApplicationStateObserver;
 import model.interfaces.IApplicationStateSubject;
 import view.interfaces.IUiModule;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static model.StartAndEndPointMode.SELECT;
 
 public class ApplicationState implements IApplicationState, IApplicationStateSubject {
@@ -21,22 +24,25 @@ public class ApplicationState implements IApplicationState, IApplicationStateSub
     private ShapeShadingType activeShapeShadingType;
     private StartAndEndPointMode activeStartAndEndPointMode;
 
-    private IApplicationStateObserver stateObserver;
+    private List<IApplicationStateObserver> stateObservers;
 
     public ApplicationState(IUiModule uiModule) {
         this.uiModule = uiModule;
         this.dialogProvider = new DialogProvider(this);
+        this.stateObservers = new ArrayList<>();
         setDefaults();
     }
 
     @Override
     public void registerObserver(IApplicationStateObserver observer) {
-        this.stateObserver = observer;
+        stateObservers.add(observer);
     }
 
     @Override
-    public void notifyObserver() {
-        stateObserver.update(this.getCurrentShapeConfiguration());
+    public void notifyObservers() {
+        for (IApplicationStateObserver stateObserver : stateObservers) {
+            stateObserver.update(getCurrentShapeConfiguration());
+        }
     }
 
     @Override
@@ -48,7 +54,7 @@ public class ApplicationState implements IApplicationState, IApplicationStateSub
     public void setActivePrimaryColor() {
         activePrimaryColor = uiModule.getDialogResponse(dialogProvider.getChoosePrimaryColorDialog());
         if (activeStartAndEndPointMode == SELECT) {
-            notifyObserver();
+            notifyObservers();
         }
     }
 
@@ -56,7 +62,7 @@ public class ApplicationState implements IApplicationState, IApplicationStateSub
     public void setActiveSecondaryColor() {
         activeSecondaryColor = uiModule.getDialogResponse(dialogProvider.getChooseSecondaryColorDialog());
         if (activeStartAndEndPointMode == SELECT) {
-            notifyObserver();
+            notifyObservers();
         }
     }
 
@@ -64,7 +70,7 @@ public class ApplicationState implements IApplicationState, IApplicationStateSub
     public void setActiveShadingType() {
         activeShapeShadingType = uiModule.getDialogResponse(dialogProvider.getChooseShadingTypeDialog());
         if (activeStartAndEndPointMode == SELECT) {
-            notifyObserver();
+            notifyObservers();
         }
     }
 

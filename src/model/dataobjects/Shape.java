@@ -21,7 +21,7 @@ public class Shape {
     private ShapeShadingType shading;
 
     // Shape boundary rectangle
-    Rectangle boundary;
+    private Rectangle boundary;
 
     public Shape(PairInt startPoint, PairInt endPoint, ShapeConfiguration shapeConfiguration) {
 

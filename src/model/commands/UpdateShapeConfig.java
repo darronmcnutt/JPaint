@@ -9,7 +9,7 @@ import model.interfaces.IUndoable;
 
 import java.io.IOException;
 
-public class UpdateShapeConfigCommand implements ICommand, IUndoable {
+public class UpdateShapeConfig implements ICommand, IUndoable {
 
     private final ShapeList selected;
     private final ShapeList masterShapeList;
@@ -20,7 +20,7 @@ public class UpdateShapeConfigCommand implements ICommand, IUndoable {
     private final ShapeColor secondaryColor;
     private final ShapeShadingType shadingType;
 
-    public UpdateShapeConfigCommand(ShapeListManager shapeListManager, ShapeConfiguration shapeConfiguration) {
+    public UpdateShapeConfig(ShapeListManager shapeListManager, ShapeConfiguration shapeConfiguration) {
         this.selected = shapeListManager.getSelectedShapeList();
         this.masterShapeList = shapeListManager.getMasterShapeList();
 
