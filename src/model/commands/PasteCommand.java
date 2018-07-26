@@ -23,9 +23,15 @@ public class PasteCommand implements ICommand,IUndoable {
     @Override
     public void run() throws IOException {
         for (Shape shape : clipboard) {
+
+            // Calculate offset for pasted shape
             PairInt startMove = new PairInt(0,0);
             PairInt endMove = new PairInt(15,15);
+
+            // Generate pasted shape
             Shape newShape = MovedShapeGenerator.generate(shape,startMove,endMove);
+
+            // Add pasted shape to master list and pasted shapes list
             masterShapeList.add(newShape);
             pastedShapes.add(newShape);
         }

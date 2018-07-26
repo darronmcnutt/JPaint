@@ -19,9 +19,11 @@ public class CopyCommand implements ICommand {
 
     @Override
     public void run() throws IOException {
+
         // Remove all elements from the clipboard
         clipboard.clear();
 
+        // Copy selected shapes to the clipboard
         for (Shape shape : selectedShapes) {
             clipboard.add(shape);
         }

@@ -21,6 +21,8 @@ public class DeleteCommand implements ICommand,IUndoable {
 
     @Override
     public void run() throws IOException {
+
+        // Delete selected shapes
         for (Shape shape : selectedShapes) {
             deletedShapes.add(shape);
             masterShapeList.remove(shape);

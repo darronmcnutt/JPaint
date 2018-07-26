@@ -10,18 +10,18 @@ import java.awt.*;
 public class Shape {
 
     // Start and end point captured from mouse
-    private PairInt startPoint;
-    private PairInt endPoint;
+    private final PairInt startPoint;
+    private final PairInt endPoint;
 
     // Shape configuration from UI
-    private ShapeConfiguration shapeConfiguration;
-    private ShapeType type;
-    private Color primaryColor;
-    private Color secondaryColor;
-    private ShapeShadingType shading;
+    private final ShapeConfiguration shapeConfiguration;
+    private final ShapeType type;
+    private final Color primaryColor;
+    private final Color secondaryColor;
+    private final ShapeShadingType shading;
 
     // Shape boundary rectangle
-    private Rectangle boundary;
+    private final Rectangle boundary;
 
     public Shape(PairInt startPoint, PairInt endPoint, ShapeConfiguration shapeConfiguration) {
 

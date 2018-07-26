@@ -4,6 +4,8 @@ import controller.IJPaintController;
 import controller.JPaintController;
 import model.*;
 import model.dataobjects.ShapeListManager;
+import model.inputhandlers.ClickHandler;
+import model.inputhandlers.KeyboardHandler;
 import model.persistence.ApplicationState;
 import view.gui.Gui;
 import view.gui.GuiWindow;

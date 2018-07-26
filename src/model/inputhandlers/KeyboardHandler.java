@@ -1,4 +1,4 @@
-package model;
+package model.inputhandlers;
 
 import model.actions.*;
 import model.dataobjects.ShapeListManager;

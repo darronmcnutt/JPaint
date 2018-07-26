@@ -29,6 +29,7 @@ public class MoveShape implements ICommand, IUndoable {
 
     @Override
     public void run() throws IOException {
+
             // Remove selected shapes from master shape list
             for (Shape shape : selectedShapes) {
                 originalShapes.add(shape);

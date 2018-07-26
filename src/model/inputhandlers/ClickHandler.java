@@ -1,5 +1,6 @@
-package model;
+package model.inputhandlers;
 
+import model.StartAndEndPointMode;
 import model.commands.CreateShape;
 import model.commands.MoveShape;
 import model.commands.SelectShape;

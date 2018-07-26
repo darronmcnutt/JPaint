@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class SelectShape implements ICommand {
     private final ShapeList masterShapeList;
-    private final ShapeList selectedShapeList;
+    private final ShapeList selectedShapes;
 
     private final int startX;
     private final int startY;
@@ -24,7 +24,7 @@ public class SelectShape implements ICommand {
 
         // Initialize fields
         this.masterShapeList = shapeListManager.getMasterShapeList();
-        this.selectedShapeList = shapeListManager.getSelectedShapeList();
+        this.selectedShapes = shapeListManager.getSelectedShapeList();
         this.selectBoundary = RectangleGenerator.generate(startPoint,endPoint);
 
         // Unpack points
@@ -37,7 +37,7 @@ public class SelectShape implements ICommand {
     public void run() throws IOException {
 
         // Remove all elements from the list of of selected shapes
-        selectedShapeList.clear();
+        selectedShapes.clear();
 
         Rectangle shapeBoundary;
 
@@ -48,7 +48,7 @@ public class SelectShape implements ICommand {
 
             if (shapeBoundary.intersects(selectBoundary) ||
                     shapeBoundary.contains(startX,startY)) {
-                selectedShapeList.add(shape);
+                selectedShapes.add(shape);
             }
         }
     }
