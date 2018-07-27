@@ -5,6 +5,8 @@ import model.ShapeShadingType;
 import model.fillstrategies.FillStrategyFactory;
 import model.interfaces.IDrawShapeStrategy;
 import model.interfaces.IFillStrategy;
+import model.interfaces.IShading;
+import model.shading.ShadingFactory;
 import view.gui.PaintCanvas;
 
 import java.awt.*;
@@ -20,14 +22,17 @@ public class DrawRectangleStrategy implements IDrawShapeStrategy {
         // Unpack shape configuration
         Color primaryColor = shape.getPrimaryColor();
         Color secondaryColor = shape.getSecondaryColor();
-        ShapeShadingType shading = shape.getShading();
+        ShapeShadingType shadingType = shape.getShading();
 
         // Get canvas graphics
         Graphics2D canvasGraphics = canvas.getGraphics2D();
 
         // Draw rectangle
-        IFillStrategy fillStrategy = FillStrategyFactory.getStrategy(shading);
-        fillStrategy.draw(rectangle,primaryColor,secondaryColor,canvasGraphics);
+        IShading shading = ShadingFactory.getShading(shadingType);
+        shading.draw(rectangle,primaryColor,secondaryColor,canvasGraphics);
+
+        //IFillStrategy fillStrategy = FillStrategyFactory.getStrategy(shading);
+        //fillStrategy.draw(rectangle,primaryColor,secondaryColor,canvasGraphics);
 
     }
 }
