@@ -5,8 +5,6 @@ import model.ShapeShadingType;
 import model.fillstrategies.FillStrategyFactory;
 import model.interfaces.IDrawShapeStrategy;
 import model.interfaces.IFillStrategy;
-import model.interfaces.IShading;
-import model.shading.ShadingFactory;
 import view.gui.PaintCanvas;
 
 import java.awt.*;
@@ -26,7 +24,7 @@ public class DrawTriangleStrategy implements IDrawShapeStrategy {
         // Unpack shape configuration
         Color primaryColor = shape.getPrimaryColor();
         Color secondaryColor = shape.getSecondaryColor();
-        ShapeShadingType shadingType = shape.getShading();
+        ShapeShadingType shading = shape.getShading();
 
         // Construct the triangle
         GeneralPath triangle = new GeneralPath();
@@ -39,10 +37,7 @@ public class DrawTriangleStrategy implements IDrawShapeStrategy {
         Graphics2D canvasGraphics = canvas.getGraphics2D();
 
         // Draw triangle
-        IShading shading = ShadingFactory.getShading(shadingType);
-        shading.draw(triangle,primaryColor,secondaryColor,canvasGraphics);
-
-        //IFillStrategy fillStrategy = FillStrategyFactory.getStrategy(shading);
-        //fillStrategy.draw(triangle,primaryColor,secondaryColor,canvasGraphics);
+        IFillStrategy fillStrategy = FillStrategyFactory.getStrategy(shading);
+        fillStrategy.draw(triangle,primaryColor,secondaryColor,canvasGraphics);
     }
 }

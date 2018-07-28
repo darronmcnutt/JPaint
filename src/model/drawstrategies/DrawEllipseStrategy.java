@@ -2,9 +2,9 @@ package model.drawstrategies;
 
 import model.dataobjects.Shape;
 import model.ShapeShadingType;
+import model.fillstrategies.FillStrategyFactory;
 import model.interfaces.IDrawShapeStrategy;
-import model.interfaces.IShading;
-import model.shading.ShadingFactory;
+import model.interfaces.IFillStrategy;
 import view.gui.PaintCanvas;
 
 import java.awt.*;
@@ -29,7 +29,7 @@ public class DrawEllipseStrategy implements IDrawShapeStrategy {
         // Unpack shape configuration
         Color primaryColor = shape.getPrimaryColor();
         Color secondaryColor = shape.getSecondaryColor();
-        ShapeShadingType shadingType = shape.getShading();
+        ShapeShadingType shading = shape.getShading();
 
         // Create ellipse
         Ellipse2D.Double ellipse = new Ellipse2D.Double(startX, startY, width, height);
@@ -38,10 +38,7 @@ public class DrawEllipseStrategy implements IDrawShapeStrategy {
         Graphics2D canvasGraphics = canvas.getGraphics2D();
 
         // Draw ellipse
-        IShading shading = ShadingFactory.getShading(shadingType);
-        shading.draw(ellipse,primaryColor,secondaryColor,canvasGraphics);
-
-        //IFillStrategy fillStrategy = FillStrategyFactory.getShading(shading);
-        //fillStrategy.draw(ellipse,primaryColor,secondaryColor,canvasGraphics);
+        IFillStrategy fillStrategy = FillStrategyFactory.getStrategy(shading);
+        fillStrategy.draw(ellipse,primaryColor,secondaryColor,canvasGraphics);
     }
 }
