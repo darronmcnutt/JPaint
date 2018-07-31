@@ -61,6 +61,8 @@ public class UpdateShapeConfig implements ICommand, IUndoable {
             selected.add(shape);
         }
 
+        CommandHistory.add(this);
+
     }
 
 
